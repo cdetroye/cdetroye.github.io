@@ -1,3 +1,71 @@
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+{% raw %}
+<div>
+$$
+\newcommand{\lolli}{\multimap}
+\newcommand{\tensor}{\otimes}
+\newcommand{\with}{\&}
+\newcommand{\all}[2]{\forall {#1}.\;{#2}}
+\newcommand{\fix}[2]{\mu {#1}.\;{#2}}
+
+\newcommand{\letv}[3]{\mathsf{let}\,{#1} = {#2}\;\mathsf{in}\;{#3}}
+
+\newcommand{\Fun}[2]{\Lambda {#1}.\;{#2}}
+\newcommand{\fun}[2]{\lambda {#1}.\;{#2}}
+
+\newcommand{\unit}{\left(\right)}
+\newcommand{\letunit}[2]{\letv{\unit}{#1}{#2}}
+\newcommand{\pair}[2]{\left({#1},{#2}\right)}
+\newcommand{\letpair}[4]{\letv{\pair{#1}{#2}}{#3}{#4}}
+\newcommand{\unita}{\left[\right]}
+\newcommand{\paira}[2]{\left[{#1}, {#2}\right]}
+\newcommand{\fst}[1]{\mathsf{fst}\,{#1}}
+\newcommand{\snd}[1]{\mathsf{snd}\,{#1}}
+\newcommand{\inl}[1]{\mathsf{inl}\,{#1}}
+\newcommand{\inr}[1]{\mathsf{inr}\,{#1}}
+\newcommand{\case}[5]{\mathsf{case}({#1}, \inl{#2} \to {#3}, \inr{#4} \to {#5})}
+\newcommand{\abort}[1]{\mathsf{abort}\,{#1}}
+\newcommand{\fold}[1]{\mathsf{in}\,{#1}}
+\newcommand{\unfold}[1]{\mathsf{out}\,{#1}}
+
+\newcommand{\judge}[4]{{#1};{#2} \vdash {#3} : {#4}}
+\newcommand{\judgetp}[2]{{#1} \ \vdash {#2} : \mathsf{type}}
+\newcommand{\judgectx}[2]{{#1} \vdash {#2} : \mathsf{ctx}}
+
+%% Rule names
+
+\newcommand{\rulename}[3]{{#2}{\mathrm{#3}}_{\mathrm{#1}}}
+\newcommand{\intro}[2][]{\rulename{#1}{#2}{I}}
+\newcommand{\elim}[2][]{\rulename{#1}{#2}{E}}
+
+\newcommand{\Var}{\rulename{}{}{Var}}
+\newcommand{\AllI}{\intro{\forall}}
+\newcommand{\AllE}{\elim{\forall}}
+\newcommand{\LolliI}{\intro{\lolli}}
+\newcommand{\LolliE}{\elim{\lolli}}
+\newcommand{\UnitI}{\intro{1}}
+\newcommand{\UnitE}{\elim{1}}
+\newcommand{\TensorI}{\intro{\tensor}}
+\newcommand{\TensorE}{\elim{\tensor}}
+\newcommand{\TopI}{\intro{\top}}
+\newcommand{\TopE}{\elim{\top}}
+\newcommand{\WithI}{\intro{\with}}
+\newcommand{\WithEFst}{\elim[fst]{\with}}
+\newcommand{\WithESnd}{\elim[snd]{\with}}
+\newcommand{\ZeroI}{\intro{0}}
+\newcommand{\ZeroE}{\elim{0}}
+\newcommand{\SumIInl}{\intro[inl]{\oplus}}
+\newcommand{\SumIInr}{\intro[inr]{\oplus}}
+\newcommand{\SumE}{\elim{\oplus}}
+
+\newcommand{\MuI}{\intro{\mu}}
+\newcommand{\MuE}{\elim{\mu}}
+
+\newcommand{\size}[1]{\left|#1\right|}
+\newcommand{\inferrule}[3][]{\frac{#2}{#3}\;{#1}}
+$$
+</div>
+{% endraw %}
