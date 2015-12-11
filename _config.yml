@@ -34,6 +34,27 @@ pages_list:
   Archive: '/archive'
   Feed: '/atom.xml'
 
-gems: [jekyll-paginate, jekyll-gist]
+gems: [jekyll-paginate, jekyll-gist, jekyll/scholar]
 paginate: 5
 paginate_path: "page:num"
+
+
+scholar:
+  style: apa
+  locale: en
+
+  sort_by: none
+  order: ascending
+  repository: '_repository'
+  source: '_bibliography'
+  bibliography: bibliography.bib
+  bibliography_template: <abbr>[{{key}}]</abbr>{{reference}} [<a href="{{links.zip}}">Supporting Materials</a>]
+
+  replace_strings: true
+  join_strings:    true
+
+  details_dir:    bibliography
+  details_layout: bibtex.html
+  details_link:   Details
+
+  query: "@*"
