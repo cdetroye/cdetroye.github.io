@@ -3,9 +3,6 @@ layout: post
 title: What's Jekyll?
 comments: true
 ---
-
-site: {{ site.disqusid }}
-{{ page.url | replace:'index.html','' }}
 [Jekyll](http://jekyllrb.com) is a static site generator, an open-source tool
 for creating simple yet powerful websites of all shapes and sizes. From
 [the project's readme](https://github.com/jekyll/jekyll/blob/master/README.markdown):

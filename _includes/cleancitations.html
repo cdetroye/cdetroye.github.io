@@ -1,0 +1,30 @@
+<script>
+
+    function isBlank(str) {
+        return (!str || /^\s*$/.test(str));
+    }
+
+    function foo() {
+        var paras = document.getElementsByClassName('pdficon');
+        for (var i = 0; i < paras.length; i++) {
+            if (paras[i].getAttribute("href") === "")
+                paras[i].parentNode.removeChild(paras[i]);
+
+        }
+    }
+
+    if (window.attachEvent) {
+        window.attachEvent('onload', foo);
+    } else {
+        if (window.onload) {
+            var curronload = window.onload;
+            var newonload = function(evt) {
+                curronload(evt);
+                foo();
+            };
+            window.onload = newonload;
+        } else {
+            window.onload = foo;
+        }
+    }
+</script>
