@@ -10,6 +10,7 @@ tagline:             The Jekyll Butler
 url:                 http://getpoole.com
 paginate:            1
 baseurl:             ""
+repository: _repository
 
 # Assets
 #
@@ -45,10 +46,10 @@ scholar:
 
   sort_by: none
   order: ascending
-  repository: '_repository'
+  repository: 'repository'
   source: '_bibliography'
   bibliography: bibliography.bib
-  bibliography_template: <abbr>[{{key}}]</abbr>{{reference}} [<a href="{{links.zip}}">Supporting Materials</a>]
+  bibliography_template: <abbr>[{{key}}]</abbr>{{reference}} [<a href="{{links.pdf}}">Supporting Materials</a>]
 
   replace_strings: true
   join_strings:    true
