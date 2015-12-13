@@ -49,7 +49,6 @@ scholar:
   repository: 'repository'
   source: '_bibliography'
   bibliography: bibliography.bib
-  #bibliography_template: <abbr>[{{key}}]</abbr>{{reference}} [<a href="{{links.pdf}}">Supporting Materials</a>]
   bibliography_template: <abbr>[{{key}}]</abbr>{{reference}} {% if {{links.pdf}} != blank %}  <a href="{{links.pdf}}">PDF</a> {% endif %}
 
   replace_strings: true

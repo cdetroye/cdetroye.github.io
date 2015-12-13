@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+# Make sure there are no uncommitted changes
+if [[ `git status --porcelain` ]]; then
+  echo "Changes in the directory. Fix this first!"
+  exit
+fi
+
+# Build the jekyll website.
+jekyll build
+
+# Commit these changes
+git add -A :/
+git commit -m "updated content"
+
+# Checkout the master branch
+git checkout master
+
+# Copy the files from _site from the jekyll branch
+git checkout jekyll -- _site
+
+# Copy the files to the root directory
+rsync -avz _site/ .
+
+# Remove the _site directory
+rm -rf _site
+
+# Push to the master
+git add -A :/
+git commit -m "updated content"
+
+# Push to gitub
+git push origin master
+
+# Back to jekyll branch
+git checkout jekyll
