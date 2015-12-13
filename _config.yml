@@ -5,12 +5,12 @@ permalink:           pretty
 
 markdown: kramdown
 # Setup
-title:               Poole
-tagline:             The Jekyll Butler
-url:                 http://getpoole.com
+title:               Call/cc
+tagline:             Christophe De Troyer's Research blog
+url:                 http://blog.call-cc.be
 paginate:            1
 baseurl:             ""
-repository: _repository
+repository:          _repository
 
 # Assets
 #
@@ -21,14 +21,14 @@ sass:
 
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Christophe De Troyer
+  url:               http://www.christophedetroyer.be
+  email:             cdetroye@vub.ac.be
 
 # Custom vars
 version:             2.0.0
 github:
-  repo:              https://github.com/poole/poole
+  repo:              https://github.com/cdetroye/cdetroye.github.io
 
 pages_list:       
   About: '/about'
