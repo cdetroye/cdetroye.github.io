@@ -1,11 +1,5 @@
 #!/bin/bash
-
 set -e
-# Make sure there are no uncommitted changes
-if [[ `git status --porcelain` ]]; then
-  echo "Changes in the directory. Fix this first!"
-  exit
-fi
 
 # Build the jekyll site
 jekyll build
