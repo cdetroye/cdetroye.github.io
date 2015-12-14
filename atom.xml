@@ -4,7 +4,7 @@
  <title>Call/cc</title>
  <link href="http://blog.call-cc.be/atom.xml" rel="self"/>
  <link href="http://blog.call-cc.be/"/>
- <updated>2015-12-14T14:46:59+01:00</updated>
+ <updated>2015-12-14T14:47:46+01:00</updated>
  <id>http://blog.call-cc.be</id>
  <author>
    <name>Christophe De Troyer</name>
@@ -85,7 +85,7 @@ such, you should alwyas import that file first.&lt;/p&gt;
    <link href="http://blog.call-cc.be/2015/12/12/readme/"/>
    <updated>2015-12-12T00:00:00+01:00</updated>
    <id>http://blog.call-cc.be/2015/12/12/readme</id>
-   <content type="html">&lt;p&gt;This is a minimal working example for a research blog. It is based on templates
+   <content type="html">&lt;p&gt;This is a minimal working example of a research blog. It is based on templates
 I found online, extended with bits and pieces to make it easier to use for
 programming language researchers.&lt;/p&gt;
 
