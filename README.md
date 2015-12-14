@@ -1,121 +1,87 @@
-# Poole
+# Researcher's blog
 
-*The Strange Case of Dr. Jekyll and Mr. Hyde* tells the story of a lawyer investigating the connection of two persons, Dr. Henry Jekyll and Mr. Edward Hyde. Chief among the novel's supporting cast is a man by the name of Mr. Poole, Dr. Jekyll's loyal butler.
+This is a minimal working example for a research blog. It is based on templates
+I found online, extended with bits and pieces to make it easier to use.
 
------
+## What it does
 
-Poole is the butler for [Jekyll](http://jekyllrb.com), the static site generator. It's designed and developed by [@mdo](https://twitter.com/mdo) to provide a clear and concise foundational setup for any Jekyll site. It does so by furnishing a full vanilla Jekyll install with example templates, pages, posts, and styles.
+ - It uses `jekyll-scholar` to make it easy to cite papers in a blogpost and/or build bibliographies.
+ - It has Google Analytics ready for use.
+ - It is fairly straight forward to add Disqus comments to individual posts
+ - It has mathjax enabled so you can type in some fancy greek.
 
-![Poole](https://f.cloud.github.com/assets/98681/1834359/71ae4048-73db-11e3-9a3c-df38eb170537.png)
+## Initial setup
 
-See Poole in action with [the demo site](http://demo.getpoole.com).
+There is some setup involved to get this blog up and running for you
+personally. We will go over each part.
 
-There are currently two official themes built on Poole:
+### Comments
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+To enable comments you will need a Disqus account. Go over to
+https://disqus.com/ and create an account. After you have set that up and have
+verified your account you should be able to add Disqus to your website by going
+to https://disqus.com/admin/create/. Follow the tutorial and then you should see
+the code to add Disqus to a universal webpage. An example might look like the
+one below. Once you have this code, replace the existing code in
+`_includes/comments.html` with yours. Be sure to keep in the if-test!
 
-Individual theme feedback and bug reports should be submitted to the theme's individual repository.
-
-
-## Contents
-
-- [Usage](#usage)
-- [Options](#options)
-  - [Rems, `font-size`, and scaling](#rems-font-size-and-scaling)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
-
-
-## Usage
-
-### 1. Install dependencies
-
-Poole is built on Jekyll and uses its built-in SCSS compiler to generate our CSS. Before getting started, you'll need to install the Jekyll gem:
-
-```bash
-$ gem install jekyll
-```
-
-**Windows users:** Windows users have a bit more work to do, but luckily [@juthilo](https://github.com/juthilo) has your back with his [Run Jekyll on Windows](https://github.com/juthilo/run-jekyll-on-windows) guide.
-
-**Need syntax highlighting?** Poole includes support for Pygments or Rouge, so install your gem of choice to make use of the built-in styling. Read more about this [in the Jekyll docs](http://jekyllrb.com/docs/templates/#code_snippet_highlighting).
-
-### 2a. Quick start
-
-To help anyone with any level of familiarity with Jekyll quickly get started, Poole includes everything you need for a basic Jekyll site. To that end, just download Poole and start up Jekyll.
-
-### 2b. Roll your own Jekyll site
-
-Folks wishing to use Jekyll's templates and styles can do so with a little bit of manual labor. Download Poole and then copy what you need (likely `_layouts/`, `*.html` files, `atom.xml` for RSS, and `public/` for CSS, JS, etc.).
-
-### 3. Running locally
-
-To see your Jekyll site with Poole applied, start a Jekyll server. In Terminal, from `/poole` (or whatever your Jekyll site's root directory is named):
-
-```bash
-$ jekyll serve
-```
-
-Open <http://localhost:4000> in your browser, and voilà.
-
-### 4. Serving it up
-
-If you host your code on GitHub, you can use [GitHub Pages](https://pages.github.com) to host your project.
-
-1. Fork this repo and switch to the `gh-pages` branch.
-  1. If you're [using a custom domain name](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages), modify the `CNAME` file to point to your new domain.
-  2. If you're not using a custom domain name, **modify the `baseurl` in `_config.yml`** to point to your GitHub Pages URL. Example: for a repo at `github.com/username/poole`, use `http://username.github.io/poole/`. **Be sure to include the trailing slash.**
-3. Done! Head to your GitHub Pages URL or custom domain.
-
-No matter your production or hosting setup, be sure to verify the `baseurl` option file and `CNAME` settings. Not applying this correctly can mean broken styles on your site.
-
-## Options
-
-Poole includes some customizable options, typically applied via classes on the `<body>` element.
-
-
-### Rems, `font-size`, and scaling
-
-Poole is built almost entirely with `rem`s (instead of pixels). `rem`s are like `em`s, but instead of building on the immediate parent's `font-size`, they build on the root element, `<html>`.
-
-By default, we use the following:
-
-```css
-html {
-  font-size: 16px;
-  line-height: 1.5;
-}
-@media (min-width: 38em) {
-  html {
-    font-size: 20px;
-  }
-}
 
 ```
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//christophedetroyer.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+```
 
-To easily scale your site's typography and components, simply customize the base `font-size`s here.
+### Google Analytics
+
+To enable analytics you will have to create a free account on
+http://www.google.com/analytics/. Again, you will get some simple
+copy/paste-able code. Replace the code in `_include/google_analytics.html` with
+your own code.
+
+If you don't want fancy analytics you can simply turn them off by removing the
+line `{% include google_analytics.html %}` from the `_layout/default.html` page.
 
 
-## Development
+### Citations
 
-Poole has two branches, but only one is used for active development.
+Citations are a bit of a trick to get working. You can either use them to list
+your own publications, or to actually add resources to a webpost. For your own
+publications, create a `.bib` file for each type of publication you want. E.g.,
+`books.bib`, `journals.bib` etc.
 
-- `master` for development.  **All pull requests should be to submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
+For all the works you just cite in blogposts you can create a file `all.bib` and
+just append all your citations from all your blogposts to that. Unless, of
+course, you want to keep them seperate. But I will not go into that.
 
-CSS is handled via Jeykll's built-in Sass compiler. Source Sass files are located in `_sass/`, included into `styles.scss`, and compile to `styles.css`.
+TODO Explain all the stuffs here.
 
-## Author
+### Mathjax
 
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
+Mathjax is a very powerful Latex renderingtool in JavaScript. However, it is not
+as simple as copy-pasting some code in between `$$`. I have provided a few
+abstractions (mathpartir in particular) in a file `_includes/mathjax.html`. If
+you want to write using these abstractions, make sure to include them in every
+blog post you need them in by adding the `{% include mathjax.html %}` directive
+to the top of your post.
 
-
-## License
-
-Open sourced under the [MIT license](LICENSE.md).
-
-<3
+Then it is somewhat easier to paste mathpartir code in there.

@@ -7,31 +7,28 @@ if [[ `git status --porcelain` ]]; then
   exit
 fi
 
-# Build the jekyll website.
-jekyll build
-
-# Commit these changes
-git add -A :/
-git commit -m "updated content"
-
-# Checkout the master branch
+# Go to master branch
 git checkout master
 
-# Copy the files from _site from the jekyll branch
-git checkout jekyll -- _site
+# Fetch changes from jekyll branch
+git reset --hard jekyll
 
-# Copy the files to the root directory
-rsync -avz _site/ .
+# Create a hidden dir for the output
+mkdir .output
 
-# Remove the _site directory
-rm -rf _site
+# Build the jekyll stuff
+jekyll build --destination .output
 
-# Push to the master
+# Move the jekyll files to the root directory
+rm -rf * # Clean everything except hidden stuff.
+mv .output/* .
+rmdir .output
+
+
+# Push
 git add -A :/
-git commit -m "updated content"
+git commit -m "Content update"
+git push -f origin master
 
-# Push to gitub
-git push origin master
-
-# Back to jekyll branch
+# Go back to jekyll branch
 git checkout jekyll

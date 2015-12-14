@@ -1,30 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-
- <title>Call/cc</title>
- <link href="http://blog.call-cc.be/atom.xml" rel="self"/>
- <link href="http://blog.call-cc.be/"/>
- <updated>2015-12-13T17:58:31+01:00</updated>
- <id>http://blog.call-cc.be</id>
- <author>
-   <name>Christophe De Troyer</name>
-   <email>cdetroye@vub.ac.be</email>
- </author>
-
- 
- <entry>
-   <title>Test post</title>
-   <link href="http://blog.call-cc.be/2015/11/11/helloworld/"/>
-   <updated>2015-11-11T00:00:00+01:00</updated>
-   <id>http://blog.call-cc.be/2015/11/11/helloworld</id>
-   <content type="html">&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
-&lt;/script&gt;
-
-&lt;div&gt;
+{% raw %}
+<div>
 $$
 \newcommand{\lolli}{\multimap}
 \newcommand{\tensor}{\otimes}
-\newcommand{\with}{\&amp;amp;}
+\newcommand{\with}{\&}
 \newcommand{\all}[2]{\forall {#1}.\;{#2}}
 \newcommand{\fix}[2]{\mu {#1}.\;{#2}}
 
@@ -84,21 +63,5 @@ $$
 \newcommand{\size}[1]{\left|#1\right|}
 \newcommand{\inferrule}[3][]{\frac{#2}{#3}\;{#1}}
 $$
-&lt;/div&gt;
-
-&lt;p&gt;This is a test post to test some greek stuff.&lt;/p&gt;
-
-$$
-\boxed{\judge{\Delta}{\Gamma}{e}{A}}
-\\
-\inferrule[\Var]
-          { }
-          {\judge{\Delta}{x:A}{x}{A}}
-$$
-
-&lt;p&gt;And there you have it, some greek.&lt;/p&gt;
-</content>
- </entry>
- 
-
-</feed>
+</div>
+{% endraw %}
