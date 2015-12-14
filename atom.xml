@@ -4,7 +4,7 @@
  <title>Call/cc</title>
  <link href="http://blog.call-cc.be/atom.xml" rel="self"/>
  <link href="http://blog.call-cc.be/"/>
- <updated>2015-12-14T15:28:42+01:00</updated>
+ <updated>2015-12-14T15:30:53+01:00</updated>
  <id>http://blog.call-cc.be</id>
  <author>
    <name>Christophe De Troyer</name>
@@ -77,80 +77,6 @@ such, you should alwyas import that file first.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;This &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;is &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\ \textbf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;\ \texttt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;awesome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}$$&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Installation</title>
-   <link href="http://blog.call-cc.be/2015/12/14/install/"/>
-   <updated>2015-12-14T00:00:00+01:00</updated>
-   <id>http://blog.call-cc.be/2015/12/14/install</id>
-   <content type="html">&lt;p&gt;This post will discuss the installation steps you need to go through to set this blog up.&lt;/p&gt;
-
-&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
-
-&lt;p&gt;In order for this blog to be hosted on &lt;github.com&gt; you will need to create a
-repository that is named `username.github.io`. Github will then expect either a
-jekyll repository (like this one) or a bunch of static html files on the
-*master* branch. We will work with the latter.&lt;/github.com&gt;&lt;/p&gt;
-
-&lt;p&gt;This repository consists of 2 branches, namely &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;. The latter
-is the branch that holds the actual jekyll project. Because we use some plugins
-that are not allowed on github we will have to build locally. The &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;
-branch only contains static HTML files.&lt;/p&gt;
-
-&lt;p&gt;So proceed by creating the repository in your own github account. I will assume
-that your username is &lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt; and the title of the github repository is thus
-&lt;code class=&quot;highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;. You can then proceed executing following commands:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone git@github.com:cdetroye/cdetroye.github.io.git&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mv cdetroye.github.io username.github.io&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cd username.github.io&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git remote set-url origin git@github.com/username/username.github.io.git&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git push remote --all&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;At this point you will have an exact copy of this repository on your own
-github. Recall that I said that GitHub expects you to have only static files on
-the master branch because we use “exotic” plugins. This means that we have to
-somehow get the output from &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll build&lt;/code&gt; (which is located in &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt;) to the
-master branch. To make this process easy I have provided a &lt;code class=&quot;highlighter-rouge&quot;&gt;pre-commit&lt;/code&gt; hook
-file located in &lt;code class=&quot;highlighter-rouge&quot;&gt;bin/update-script&lt;/code&gt;. So in order to make the process painless
-you will have to create a symlink to that script file. To do so, execute:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ln -s bin/update-site .git/hooks/pre-commit&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This will execute the following code each time before you commit:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
-
-&lt;span class=&quot;c&quot;&gt;# Build the jekyll site&lt;/span&gt;
-jekyll build
-
-&lt;span class=&quot;c&quot;&gt;# Make a copy of the master branch&lt;/span&gt;
-git clone -b master . .temp/
-&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; .temp/
-
-&lt;span class=&quot;c&quot;&gt;# Copy the files&lt;/span&gt;
-/bin/cp -rf ../_site/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; .
-
-&lt;span class=&quot;c&quot;&gt;# Commit&lt;/span&gt;
-git add -A :/
-git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;Content update&quot;&lt;/span&gt;
-git push origin master
-
-&lt;span class=&quot;c&quot;&gt;# Remove temp stuff&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
-rm -Rf .temp/
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Disregard this script. It just makes sure that your html files are in the
-top-level of your master branch. This means that &lt;em&gt;you can only make changes to
-the &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; branch and should not touch the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch&lt;/em&gt;.&lt;/p&gt;
 </content>
  </entry>
  
