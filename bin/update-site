@@ -7,31 +7,21 @@ if [[ `git status --porcelain` ]]; then
   exit
 fi
 
-# Build the jekyll website.
+# Build the jekyll site
 jekyll build
 
-# Commit these changes
+# Make a copy of the master branch
+git clone -b master . .temp/
+cd .temp/
+
+# Copy the files
+/bin/cp -rf ../_site/* .
+
+# Commit
 git add -A :/
-git commit -m "updated content"
-
-# Checkout the master branch
-git checkout master
-
-# Copy the files from _site from the jekyll branch
-git checkout jekyll -- _site
-
-# Copy the files to the root directory
-rsync -avz _site/ .
-
-# Remove the _site directory
-rm -rf _site
-
-# Push to the master
-git add -A :/
-git commit -m "updated content"
-
-# Push to gitub
+git commit -m "Content update"
 git push origin master
 
-# Back to jekyll branch
-git checkout jekyll
+# Remove temp stuff
+cd ..
+rm -Rf .temp/
