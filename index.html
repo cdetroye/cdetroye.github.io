@@ -143,6 +143,84 @@ such, you should alwyas import that file first.</p>
   
   <article class="post">
     <h1 class="post-title">
+      <a href="/2015/12/14/install/">
+        Installation
+      </a>
+    </h1>
+
+    <time datetime="2015-12-14T00:00:00+01:00" class="post-date">14 Dec 2015</time>
+
+    <p>This post will discuss the installation steps you need to go through to set this blog up.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>In order for this blog to be hosted on <github.com> you will need to create a
+repository that is named `username.github.io`. Github will then expect either a
+jekyll repository (like this one) or a bunch of static html files on the
+*master* branch. We will work with the latter.</github.com></p>
+
+<p>This repository consists of 2 branches, namely <code class="highlighter-rouge">master</code> and <code class="highlighter-rouge">jekyll</code>. The latter
+is the branch that holds the actual jekyll project. Because we use some plugins
+that are not allowed on github we will have to build locally. The <code class="highlighter-rouge">master</code>
+branch only contains static HTML files.</p>
+
+<p>So proceed by creating the repository in your own github account. I will assume
+that your username is <code class="highlighter-rouge">username</code> and the title of the github repository is thus
+<code class="highlighter-rouge">username.github.io</code>. You can then proceed executing following commands:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">git clone git@github.com:cdetroye/cdetroye.github.io.git</code></li>
+  <li><code class="highlighter-rouge">mv cdetroye.github.io username.github.io</code></li>
+  <li><code class="highlighter-rouge">cd username.github.io</code></li>
+  <li><code class="highlighter-rouge">git remote set-url origin git@github.com/username/username.github.io.git</code></li>
+  <li><code class="highlighter-rouge">git push remote --all</code></li>
+</ul>
+
+<p>At this point you will have an exact copy of this repository on your own
+github. Recall that I said that GitHub expects you to have only static files on
+the master branch because we use “exotic” plugins. This means that we have to
+somehow get the output from <code class="highlighter-rouge">jekyll build</code> (which is located in <code class="highlighter-rouge">_site</code>) to the
+master branch. To make this process easy I have provided a <code class="highlighter-rouge">pre-commit</code> hook
+file located in <code class="highlighter-rouge">bin/update-script</code>. So in order to make the process painless
+you will have to create a symlink to that script file. To do so, execute:</p>
+
+<p><code class="highlighter-rouge">ln -s bin/update-site .git/hooks/pre-commit</code></p>
+
+<p>This will execute the following code each time before you commit:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">set</span> -e
+
+<span class="c"># Build the jekyll site</span>
+jekyll build
+
+<span class="c"># Make a copy of the master branch</span>
+git clone -b master . .temp/
+<span class="nb">cd</span> .temp/
+
+<span class="c"># Copy the files</span>
+/bin/cp -rf ../_site/<span class="k">*</span> .
+
+<span class="c"># Commit</span>
+git add -A :/
+git commit -m <span class="s2">"Content update"</span>
+git push origin master
+
+<span class="c"># Remove temp stuff</span>
+<span class="nb">cd</span> ..
+rm -Rf .temp/
+
+</code></pre>
+</div>
+
+<p>Disregard this script. It just makes sure that your html files are in the
+top-level of your master branch. This means that <em>you can only make changes to
+the <code class="highlighter-rouge">jekyll</code> branch and should not touch the <code class="highlighter-rouge">master</code> branch</em>.</p>
+
+  </article>
+  
+  <article class="post">
+    <h1 class="post-title">
       <a href="/2015/12/12/readme/">
         Introduction
       </a>
@@ -472,7 +550,7 @@ $$
 
       <footer class="footer">
         <small>
-          &copy; <time datetime="2015-12-14T14:47:46+01:00">2015</time>. Christophe De Troyer all rights reserved. Contact me: cdetroye@vub.ac.be
+          &copy; <time datetime="2015-12-14T15:20:59+01:00">2015</time>. Christophe De Troyer all rights reserved. Contact me: cdetroye@vub.ac.be
         </small>
       </footer>
     </div>
