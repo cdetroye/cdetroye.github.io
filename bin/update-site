@@ -1,21 +1,28 @@
 #!/bin/bash
+
 set -e
+
+root=`pwd`
+echo $root
 
 # Build the jekyll site
 jekyll build
 
+unset GIT_WORK_TREE
+
 # Make a copy of the master branch
-git clone -b master . .temp/
+git clone -l -b master $root .temp/
 cd .temp/
 
-# Copy the files
-/bin/cp -rf ../_site/* .
+## Copy the files
+/bin/cp -Rf ../_site/* .
 
-# Commit
+## Commit
 git add -A :/
 git commit -m "Content update"
 git push origin master
 
-# Remove temp stuff
+## Remove temp stuff
 cd ..
 rm -Rf .temp/
+
