@@ -10,7 +10,7 @@
 
   <title>
     
-      Call/cc &middot; Christophe De Troyer's Research blog
+      Introduction &middot; Call/cc
     
   </title>
 
@@ -67,90 +67,10 @@
         </h3>
       </header>
       <main>
-        <div class="posts">
-  
-  <article class="post">
-    <h1 class="post-title">
-      <a href="/2015/12/14/writing/">
-        How to write a blogpost
-      </a>
-    </h1>
-
-    <time datetime="2015-12-14T00:00:00+01:00" class="post-date">14 Dec 2015</time>
-
-    <h2 id="basic-layout-of-a-blog-post">Basic layout of a blog post</h2>
-
-<p>To create a new blogpost its as simple as creating a new file in the <code class="highlighter-rouge">_posts</code>
-directory. The naming scheme is a bit tricky, though. You have create a file
-using the scheme <code class="highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code>. For example, this blog is named
-<code class="highlighter-rouge">2015-12-14-writing.md</code>.</p>
-
-<p>Once you have <code class="highlighter-rouge">touch</code>ed that file you can proceed putting content in it. The
-first thing you have to do is create a so-called ‘Front Matter’. A silly name
-for a header.</p>
-
-<p>The Front Matter for this post, for example is shown below.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>---
-layout: post
-title: How to write a blogpost
-description: Introduction to writing a blogpost using Jekyll
-comments: true
----
-</code></pre>
-</div>
-
-<p>The <code class="highlighter-rouge">layout</code> directive tells Jekyll what kind of page this is. It’s the name of
-the layout you want to use. Looking at the <code class="highlighter-rouge">_layout</code> directory we see that we
-have <code class="highlighter-rouge">default.html</code>, <code class="highlighter-rouge">page.html</code> and <code class="highlighter-rouge">post.html</code>. The value is just the filename
-without extension. For your blogposts this will obviously be <code class="highlighter-rouge">post.html</code>.</p>
-
-<p>The <code class="highlighter-rouge">title</code> directive is… the title. The description is used to describe the
-content of this page. The blog is configured such that the description will be
-used for some minor SEO. You want people to read this stuff, right? Then make it
-a good one. And finally the <code class="highlighter-rouge">comments</code> directive, as explained in the
-introduction post <a href="/2015/12/12/readme/">1</a>.</p>
-
-<p>Once you have that set up it’s basically just writing blog posts. You can use
-the regular Markdown syntax you are used to. Check out a basic markdown guide on
-how to do this if you are not familiar.</p>
-
-<h3 id="mathjax">Mathjax</h3>
-
-<p>Since this blogging template has been setup with some basic MathJax I will spend
-a little time on how I have done this and how you can use it.</p>
-
-<p>The mathjax platform, for me in particular, lacked some expresivity. I write a
-lot of “greek” and for that I use the <code class="highlighter-rouge">mathpartir</code> library. Mathjax does not
-support this so I have predefined a few macros to mitigate that shortcoming as
-much as possible. These are present in the <code class="highlighter-rouge">_include/mathjax.html</code> file. So when
-you want to write more than basic mathjax, in particular, derivation rules and
-such, you should alwyas import that file first.</p>
-
-<p>To add some latex to your post you can then use the regular mathjax.</p>
-
-<p>A simple example, that does not require any imports, is the following:</p>
-
-<script type="math/tex; mode=display">This \ is \ \textbf{super} \ \texttt{awesome}</script>
-
-<p>which is, in the source code, nothing more than this:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">$$</span><span class="nb">This </span><span class="nv">\ </span><span class="nb">is </span><span class="nv">\ \textbf</span><span class="p">{</span><span class="nb">super</span><span class="p">}</span><span class="nb"> </span><span class="nv">\ \texttt</span><span class="p">{</span><span class="nb">awesome</span><span class="p">}$$</span>
-</code></pre>
-</div>
-
-  </article>
-  
-  <article class="post">
-    <h1 class="post-title">
-      <a href="/2015/12/12/readme/">
-        Introduction
-      </a>
-    </h1>
-
-    <time datetime="2015-12-12T00:00:00+01:00" class="post-date">12 Dec 2015</time>
-
-    <p>This is a minimal working example for a research blog. It is based on templates
+        <article class="post">
+  <h1 class="post-title">Introduction</h1>
+  <time datetime="2015-12-12T00:00:00+01:00" class="post-date">12 Dec 2015</time>
+  <p>This is a minimal working example for a research blog. It is based on templates
 I found online, extended with bits and pieces to make it easier to use for
 programming language researchers.</p>
 
@@ -453,18 +373,25 @@ $$
 
 <ol class="bibliography"><li><abbr>[pyla2011composing]</abbr> <span id="pyla2011composing">Pyla, H. K. (2011). Composing Locks by Decomposing Deadlocks. In <i>Proceedings of the ACM International Conference Companion on Object Oriented Programming Systems Languages and Applications Companion</i> (pp. 67–70). New York, NY, USA: ACM. doi:10.1145/2048147.2048176</span>   <a href="/repository/pyla2011composing.pdf">PDF</a> </li></ol>
 
-  </article>
-  
-</div>
+</article>
 
-<div class="pagination">
-  
-    <span class="pagination-item older">Older</span>
-  
-  
-    <span class="pagination-item newer">Newer</span>
-  
-</div>
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/12/14/writing/">
+            How to write a blogpost
+            <small><time datetime="2015-12-14T00:00:00+01:00">14 Dec 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
 
         
 
